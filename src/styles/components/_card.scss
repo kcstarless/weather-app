@@ -1,0 +1,39 @@
+// Card components
+
+.card {
+    display: block;
+    margin: var(--space-xs);
+    padding: var(--space-m);
+    border: var(--border);
+    // box-shadow: var(--shadow-small);
+    border-radius: calc(var(--border-radius) * 2);
+    // border-radius: var(--border-radius);
+
+    .card-title {
+        font-size: var(--font-size-l);
+        padding-bottom: var(--space-m);
+        font-weight: 700;
+    }
+
+    .card-body {
+        font-size: var(--font-size-m);
+
+        a {
+            text-decoration: underline;
+        }
+    }
+}
+
+
+.card-inner {
+    display: flex;
+    gap: var(--space-m);
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    fieldset{
+        padding: var(--space-m);
+        border-radius: calc(var(--border-radius) * 2);
+        border: var(--border);
+    }
+}

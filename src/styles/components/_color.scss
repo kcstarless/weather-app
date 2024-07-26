@@ -1,0 +1,30 @@
+.color {
+    display: inline-block;
+    padding: var(--space-xs);
+    margin: var(--space-xs);
+    margin-left: 0;
+    min-width: 250px;
+    height: var(--space-xxxxl);
+    box-sizing: border-box; 
+    border: var(--border-dark);
+    box-shadow: var(--shadow-large);
+    border-radius: var(--border-radius);
+    
+    &::before {
+        content: attr(data-label); /* Display the label (e.g., primary) */
+        border-radius: inherit; /* Inherit parent's border radius */
+        display: flex;
+        align-items: left;
+        justify-content: left;
+        font-weight: bold;
+    }
+    // Specific color value styles
+    &::after {
+        content: attr(data-value); /* Display the color value (e.g., hsl(350, 67%, 50%)) */
+        display: flex;
+        align-items: center;
+        justify-content: flex-end; /* Align text to the right */
+        font-weight: bold;
+    }
+}
+
