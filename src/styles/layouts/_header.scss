@@ -1,0 +1,10 @@
+header {
+    grid-area: header;
+    padding: var(--space-l);
+    padding-bottom: 0;
+    // border: var(--border-dark);
+    border-radius: var(--border-radius);
+    h3 {
+      color: var(--color-primary-rotate);
+    }
+  }

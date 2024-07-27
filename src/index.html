@@ -5,6 +5,25 @@
     <title>Template-Webpack</title>
 </head>
 <body>
-    
+    <div class="container">
+        <header><h4>Odin Weather</h4></header>
+
+        <div class="content">
+            <form method="post" id="weather" novalidate>
+                <fieldset class="fieldset-header">
+                    <legend>Get current weather conditions!</legend>
+                    <label for="location"><br>
+                        <input type="text" id="location" placeholder="eg. london" name="location" data-label="Location"  minlength="2" required>
+                        <span class="error" aria-live="polite"></span>
+                    </label>    
+                </fieldset>
+                <div class="fieldset-footer">
+                    <button type="submit" form="search" class="btn btn--primary">Search</button>
+                </div>
+            </form>
+        </div>
+
+        <footer></footer>
+    </div>
 </body>
 </html>

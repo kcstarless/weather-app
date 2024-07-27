@@ -1,0 +1,22 @@
+.fieldset-header {
+    // border: var(--border-dark);
+    padding-bottom: var(--space-s);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: white;
+    box-shadow: var(--shadow-small);
+  
+    letter-spacing: 2px;
+  }
+  fieldset{
+    border: solid 2px var(--color-secondary);
+  }
+  legend {
+    margin-left: var(--space-m);
+    font-size: var(--font-size-xl);
+    color: var(--color-secondary);
+  } 
+  
+  .fieldset-footer {
+    margin-top: var(--space-m);
+  }

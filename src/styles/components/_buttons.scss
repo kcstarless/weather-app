@@ -1,0 +1,133 @@
+.btn {
+    // All the previous code
+    border: none;
+    height: var(--space-xxl);
+
+    &--primary {
+      border-radius: var(--border-radius);
+      border: none;
+      color: var(--color-white);
+      background-image: linear-gradient(to right, var(--color-primary), var(--color-primary-rotate));
+      padding: var(--space-xs);
+  
+      &:hover,
+      &:focus,
+      &:focus-within,
+      &:active {
+        color: var(--color-white);
+        filter: saturate(1.4) brightness(115%);
+      }
+
+      &.round {
+        border: none;
+        border-radius: 50%; // Makes the button circular
+        // padding: 10px; // Adjust padding to fit the round shape
+        // text-align: center; // Center text horizontally
+        width: 30px; // Adjust width as needed
+        height: 30px; // Ensure height matches width for a circle
+        font-size: var(--font-size-xl);
+      }
+    }
+  
+    &--secondary {
+      color: var(--color-white);
+      background-image: linear-gradient(to right, var(--color-secondary), var(--color-secondary-rotate));
+  
+      &:hover,
+      &:focus,
+      &:focus-within,
+      &:active {
+        color: var(--color-white);
+        filter: saturate(1.2) brightness(110%);
+      }
+
+      &.round {
+        border: none;
+        border-radius: 50%; // Makes the button circular
+        // padding: 10px; // Adjust padding to fit the round shape
+        // text-align: center; // Center text horizontally
+        width: 30px; // Adjust width as needed
+        height: 30px; // Ensure height matches width for a circle
+        font-size: var(--font-size-xl);
+      }
+    }
+  
+    &--light {
+      color: var(--color-dark);
+      background-color: var(--color-light);
+  
+      &:hover,
+      &:focus,
+      &:focus-within,
+      &:active {
+        color: var(--color-dark);
+        filter: brightness(92%);
+      }
+
+      &.round {
+        border-radius: 50%; // Makes the button circular
+        // padding: 10px; // Adjust padding to fit the round shape
+        // text-align: center; // Center text horizontally
+        width: 30px; // Adjust width as needed
+        height: 30px; // Ensure height matches width for a circle
+        font-size: var(--font-size-xl);
+      }
+    }
+  
+    &--dark {
+      color: var(--color-white);
+      border-color: var(--color-dark);
+      background-color: var(--color-dark);
+  
+      &:hover,
+      &:focus,
+      &:focus-within,
+      &:active {
+        color: var(--color-white);
+      }
+      &.round {
+        border-radius: 50%; // Makes the button circular
+        // padding: 10px; // Adjust padding to fit the round shape
+        // text-align: center; // Center text horizontally
+        width: 30px; // Adjust width as needed
+        height: 30px; // Ensure height matches width for a circle
+        font-size: var(--font-size-xl);
+      }
+    }
+
+    &--round {
+      appearance: none; /* Remove default styling */
+      -webkit-appearance: none; /* Remove default styling for WebKit browsers */
+      width: 15px; /* Width of the checkbox */
+      height: 15px; /* Height of the checkbox */
+      border-radius: 50%; /* Fully rounded */
+      outline: none; /* Remove outline */
+      cursor: pointer; /* Pointer cursor on hover */
+      position: relative; /* Positioning for custom checkmark */
+      background-color: #fff; /* Background color */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+      /* Default state (unchecked) */
+      &:before {
+        content: ''; /* Default circle */
+        border: var(--border-muted); /* Border for the circle */
+        border-radius: 50%; /* Fully rounded */
+        width: 15px; /* Width of the circle */
+        height: 15px; /* Height of the circle */
+      }
+  
+      /* Checked state */
+      &:checked::before {
+        content: ''; /* Remove the circle */
+        border: none; /* Ensure no border is applied */
+      }
+  
+      &:checked::after {
+        content: '✔'; /* Checkmark content */
+        font-size: 20px; /* Size of the checkmark */
+        color: var(--color-secondary); /* Checkmark color */
+      }
+    }
+  }
