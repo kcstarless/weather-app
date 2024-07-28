@@ -6,21 +6,49 @@
 </head>
 <body>
     <div class="container">
-        <header><h4>Odin Weather</h4></header>
+        <header>
+            <h1>Weather Report</h1>
+            <form method="post" class="search" id="location-search" novalidate>
+                    <label for="location">
+                        <input type="text" id="location" placeholder="pick a location eg. london" name="location" data-label="Location"  minlength="2" required>
+                    </label>  
+                    <button type="submit" form="search" class="btn btn--primary">Search</button>  
+            </form>
+        </header>
 
         <div class="content">
-            <form method="post" id="weather" novalidate>
-                <fieldset class="fieldset-header">
-                    <legend>Get current weather conditions!</legend>
-                    <label for="location"><br>
-                        <input type="text" id="location" placeholder="eg. london" name="location" data-label="Location"  minlength="2" required>
-                        <span class="error" aria-live="polite"></span>
-                    </label>    
-                </fieldset>
-                <div class="fieldset-footer">
-                    <button type="submit" form="search" class="btn btn--primary">Search</button>
+            <div class="overview">
+                <div class="overview-title"></div>
+                <div class="overview-body">
+                    <div class="icon"></div>
+                    <div class="temp"></div>
+                    <div class="time"></div>
+                </div>       
+            </div>
+            <div class="current-condition">
+                <div class="card-container">
+                    <h3>Current Conditions</h3>
+                    <div class="card">
+                        <div class="card-title">Temperature</div>
+                        <div class="card-body">feelslike, cloudcover, datetime,</div>
+                    </div>
                 </div>
-            </form>
+                <div class="card-container">
+                    <h3>Current Conditions</h3>
+                    <div class="card">
+                        <div class="card-title">Temperature</div>
+                        <div class="card-body"> </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <h3>Current Conditions</h3>
+                    <div class="card">
+                        <div class="card-title">Temperature</div>
+                        <div class="card-body">Hello</div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <footer></footer>

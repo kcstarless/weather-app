@@ -1,47 +1,35 @@
-label {
-  margin: var(--space-s);
-  font-size: var(--font-size-xs);
-
-}
-
-.btn {
-  width: 200px;
-  margin: 0px;
-  padding: 0px;
-}
-
-input {
-  line-height: var(--line-height-break);
+form {
+  // border: var(--border-dark);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-s);
   width: 100%;
-  letter-spacing: 2px;
-  outline: none;
-  line-height: var(--space-xxl);
-  padding-left: var(--space-s);
+  flex-wrap: wrap; // Allows form elements to wrap to the next line if needed
+  
+
+  label {
+    // border: var(--border-dark);
+    font-size: var(--font-size-xs);
+  }
+  
+  .btn {
+    width: 200px;
+  }
+  
+  input {
+    width: 300px;
+    letter-spacing: 2px;
+    outline: none;
+    line-height: var(--space-xxl);
+    padding-left: var(--space-s);
+    border: solid 2px var(--color-primary);
+    border-radius: var(--border-radius);
+  }
+  
+  input:focus {
+    border: solid 2px var(--color-secondary);
+  }
 }
 
-input:focus {
-  border: solid 2px var(--color-secondary);
-}
-
-input:invalid {
-  border: solid 2px var(--color-secondary);
-}
-input:valid {
-  border: solid 2px var(--color-secondary);
-}
-
-// .input-error {
-//   border: solid 2px var(--color-primary-rotate); /* Red border for invalid inputs */
-// }
-
-// .input-valid {
-//   border: solid 2px var(--color-secondary); /* Green border for valid inputs */
-// }
-
-.error.active {
-  color: rgb(206, 30, 30);
-}
-
-p {
-  margin: 2px
-}

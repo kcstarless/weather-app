@@ -19,7 +19,10 @@ body {
   flex-direction: column;
   min-height: 100%;
 
-  background-color: var(--color-background);
+  background: url('../images/background.jpg') no-repeat center center fixed;
+  background-size: cover; 
+  
+  // background-color: var(--color-background);
   color: var(--color-text-body);
   line-height: var(--line-height-body);
   font-family: var(--font-family-sans);

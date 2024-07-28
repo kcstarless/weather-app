@@ -1,26 +1,31 @@
 // Card components
+.card-container {
+    h3 {
+        padding: var(--space-m);
+        padding-left: var(--space-xs);
+        color: var(--color-white);
+    }
+}
+
 
 .card {
     display: block;
-    margin: var(--space-xs);
+    // margin: var(--space-xs);
     padding: var(--space-m);
     border: var(--border);
+
+    background-color: var(--color-white);
     // box-shadow: var(--shadow-small);
     border-radius: calc(var(--border-radius) * 2);
     // border-radius: var(--border-radius);
 
     .card-title {
-        font-size: var(--font-size-l);
-        padding-bottom: var(--space-m);
+        font-size: var(--font-size-m);
         font-weight: 700;
     }
 
     .card-body {
-        font-size: var(--font-size-m);
-
-        a {
-            text-decoration: underline;
-        }
+        font-size: var(--font-size-s);
     }
 }
 

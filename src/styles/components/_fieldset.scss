@@ -1,22 +1,21 @@
-.fieldset-header {
-    // border: var(--border-dark);
-    padding-bottom: var(--space-s);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    background-color: white;
-    box-shadow: var(--shadow-small);
-  
-    letter-spacing: 2px;
-  }
-  fieldset{
-    border: solid 2px var(--color-secondary);
-  }
-  legend {
-    margin-left: var(--space-m);
-    font-size: var(--font-size-xl);
-    color: var(--color-secondary);
-  } 
-  
-  .fieldset-footer {
-    margin-top: var(--space-m);
-  }
+
+fieldset{
+  border: solid 2px var(--color-primary);
+  padding-bottom: var(--space-s);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-small);
+
+  letter-spacing: 2px;
+}
+legend {
+  // padding-bottom: 25px;
+  margin-left: var(--space-m);
+  font-size: var(--font-size-xl);
+  color: var(--color-primary);
+} 
+
+.fieldset-footer {
+  margin-top: var(--space-m);
+}
