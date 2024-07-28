@@ -1,5 +1,7 @@
 .container {
     // border: var(--border-dark);
+
+    position: relative;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;

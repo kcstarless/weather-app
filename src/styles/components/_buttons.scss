@@ -2,6 +2,7 @@
     // All the previous code
     border: none;
     height: var(--space-xxl);
+    cursor: pointer;
 
     &--primary {
       border-radius: var(--border-radius);
@@ -20,8 +21,12 @@
       }
 
       &.round {
+        padding: var(--space-m);
+        display: flex;
+        justify-content: center;
+        align-items: center;
         border: none;
-        border-radius: 50%; // Makes the button circular
+        border-radius: 20%; // Makes the button circular
         // padding: 10px; // Adjust padding to fit the round shape
         // text-align: center; // Center text horizontally
         width: 30px; // Adjust width as needed

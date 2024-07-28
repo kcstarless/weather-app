@@ -15,4 +15,33 @@ header {
       color: var(--color-light);
       padding: var(--space-s) 0 var(--space-xl) 0;
     }
+
+    .units {
+      justify-content: end;
+      // position: absolute;
+      // top: 1rem; /* Adjust based on your layout */
+      // right: 1rem; /* Adjust based on your layout */
+
+      display: flex;
+      gap: var(--space-xxxs);
+
+      .unit-group {
+        background-color: var(--color-primary); /* Default background color */
+        color: var(--color-white); /* Default text color */
+        border: none; /* Remove border */
+        border-radius: var(--border-radius); /* Rounded corners */
+        padding: var(--space-s); /* Padding */
+        cursor: pointer; /* Pointer cursor on hover */
+        font-size: var(--font-size-m); /* Font size */
+        transition: background-color 0.3s, color 0.3s; /* Smooth transition for state changes */
+      } 
+    
+      .unit-group.selected {
+          background-color: var(--color-white); /* Background color for selected state */
+          color: var(--color-dark); /* Text color for selected state */
+          border: 2px solid var(--color-accent);
+          pointer-events: none;
+          cursor: default; /* Pointer cursor on hover */ /* Optional: border to highlight the selected button */
+      }
+    }
   }

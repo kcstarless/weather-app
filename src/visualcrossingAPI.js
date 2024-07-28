@@ -1,9 +1,12 @@
 // visualcrossingAPI.js
-const ICON_SET = 'icons2'; 
+import { config } from './config.js';
 
 function getApiURL(location) {
-    const apiKey = 'RCFQPET5NKRMVHV5QZ3C67MEG';
-    let apiURL = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${apiKey}&iconSet=${ICON_SET}`;
+    const icons = config.iconGroup; 
+    const apiKey = config.apiKey;
+    const units = config.unitGroup;
+    
+    let apiURL = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${apiKey}&iconSet=${icons}&unitGroup=${units}`;
     return apiURL;
 }
 

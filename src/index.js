@@ -5,19 +5,62 @@ import './styles/main.scss';
 import { getWeatherData } from './visualcrossingAPI.js';
 import { WeatherData } from './weatherData.js';
 import { render } from './render.js';
+import { setUnitGroup } from './config.js';
 
-const location = 'melbourne'; 
-const rawData = await getWeatherData(location);
-const weatherData = new WeatherData(rawData);
-console.log(weatherData.getCurrent('temp'));
-console.log(weatherData.getDays());
-console.log(weatherData.getDay(5));
-console.log(weatherData.getDayByHours(0));
+// Event listener for unit selection
+document.addEventListener('DOMContentLoaded', () => {
+    const unitButtons = document.querySelectorAll('.units .unit-group');
+    
+    unitButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove 'selected' class from all buttons
+            unitButtons.forEach(btn => btn.classList.remove('selected'));
+            
+            // Add 'selected' class to the clicked button
+            button.classList.add('selected');
+            
+            // Optionally, you can perform actions here, such as updating a setting
+            const selectedUnit = button.getAttribute('data-unit');
+            setUnitGroup(selectedUnit);
+            init();
+            console.log(`Selected unit: ${selectedUnit}`);
+        });
+    });
+});
 
 
-render(weatherData);
+async function fetchAndStoreWeatherData(location) {
+    const localStorageKey = 'weatherData-${location}';
+    const cachedData = localStorage.getItem(localStorageKey);
 
-const iconUrl = weatherData.getIcon();
+    if (cachedData) {
+        console.log('Using cached data from local storage');
+        return JSON.parse(cachedData);
+    }
 
-// Use the icon URL in your rendering logic
-console.log('Icon URL:', iconUrl);
+    const rawData = await getWeatherData(location);
+
+    if (rawData) {
+        localStorage.setItem(localStorageKey, JSON.stringify(rawData));
+    }
+    return rawData;
+}
+
+async function init() {
+    const location = 'melbourne';
+    const rawData = await fetchAndStoreWeatherData(location);
+
+    if (rawData) {
+        const weatherData = new WeatherData(rawData);
+        console.log(weatherData.getCurrent('temp'));
+        console.log(weatherData.getDays());
+        console.log(weatherData.getDay(5));
+        console.log(weatherData.getDayByHours(0));
+        console.log(weatherData);
+        render(weatherData);
+    } else {
+        console.error('Failed to fetch weather data');
+    }
+}
+
+init();
