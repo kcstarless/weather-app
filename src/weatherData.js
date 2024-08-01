@@ -15,6 +15,10 @@ export class WeatherData {
         return this.current[value];
     }
 
+    getAddress() {
+        return this.address;
+    }
+
     getDays() {
         return this.days;
     }

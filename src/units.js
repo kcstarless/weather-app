@@ -1,4 +1,5 @@
 // units.js
+
 export const unitSymbols = {
     metric: {
         temp: '°C',
@@ -11,7 +12,7 @@ export const unitSymbols = {
         winddir: '', // No symbol
         uvindex: '' // No symbol
     },
-    imperial: {
+    us: {
         temp: '°F',
         feelslike: '°F',
         humidity: '%',

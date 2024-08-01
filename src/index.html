@@ -8,15 +8,14 @@
     <div class="container">
         <header>
             <div class="units">
-                <button class="btn btn--primary round unit-group selected" data-unit="metric">°C</button>
-                <button class="btn btn--primary round unit-group" data-unit="imperial">°F</button>
+                <button class="btn btn--primary round unit-group selected" data-unit="metric" title="metric unit">°C</button>
+                <button class="btn btn--primary round unit-group" data-unit="us" title="imperial unit">°F</button>
             </div>
             <h1>Weather Report</h1>
             <form method="post" class="search" id="location-search" novalidate>
-                    <label for="location">
-                        <input type="text" id="location" placeholder="pick a location eg. london" name="location" data-label="Location"  minlength="2" required>
-                    </label>  
-                    <button type="submit" form="search" class="btn btn--primary">Search</button>  
+                <label for="location">
+                    <input type="text" id="location" placeholder="pick a location eg. london" name="location" data-label="Location"  minlength="2" required>
+                </label>  
             </form>
         </header>
 
@@ -32,7 +31,6 @@
             <div class="current-condition">
                     <!-- <h3>Current Conditions</h3> -->
             </div>
-
         </div>
 
         <footer></footer>
