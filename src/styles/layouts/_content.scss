@@ -15,15 +15,18 @@
     justify-content: center;
     gap: var(--space-m);
 
-    .overview-title {
+    .overview-location {
         padding: var(--space-xxs);
         padding-left: var(--space-l);
         padding-right: var(--space-l);
-        color: var(--color-white);
+        padding-bottom: 0px;
+        color: #bd5050;
         font-size: var(--font-size-xxxl);
-        border-radius: 5rem;
+        // border-bottom: solid 5px white;
+        // border-radius: 5rem;
         font-weight: bold;
-        background-color: rgba(0, 0, 0, 0.2);
+        text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.849);
+        // background-color: rgba(255, 255, 255, 0.4);
     }
 
     .overview-body {
@@ -37,7 +40,7 @@
         flex-wrap: wrap;
     
         .icon {
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 254, 254, 0.5);
             // border: var(--border-dark);
             border-radius: 5rem;
             padding: var(--space-m);

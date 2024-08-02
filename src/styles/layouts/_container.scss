@@ -3,8 +3,9 @@
 
     position: relative;
     display: grid;
+    gap: var(--space-xxxl);
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
+    grid-template-rows: 0.2fr 1fr 0.1fr;
     grid-template-areas:
       "header"
       "content"

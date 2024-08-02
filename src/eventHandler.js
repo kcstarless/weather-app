@@ -12,7 +12,7 @@ export function unitToggle(unitButtons, onUnitChange){
             // Add 'selected' class to the clicked button
             button.classList.add('selected');
             
-            // Optionally, you can perform actions here, such as updating a setting
+            // Update unitGroup
             const selectedUnit = button.getAttribute('data-unit');
             setUnitGroup(selectedUnit);
 
@@ -24,7 +24,7 @@ export function unitToggle(unitButtons, onUnitChange){
 }
 
 
-// User entered location hanlder.
+// User entered location handler.
 export function searchLocation(location, onSubmit){
     location.addEventListener('keypress', (event) => {
         if (event.key === 'Enter') {

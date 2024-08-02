@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template-Webpack</title>
+    <title>Weahter App</title>
 </head>
 <body>
     <div class="container">
@@ -21,11 +21,20 @@
 
         <div class="content">
             <div class="overview">
-                <div class="overview-title"></div>
+                <div class="overview-location">melbourne</div>
                 <div class="overview-body">
-                    <div class="icon"></div>
-                    <div class="temp"></div>
-                    <div class="time"></div>
+                    <div class="icon">
+                        <div class="icon-value" id ="icon-value"></div>
+                        <div class="loading" id="loading"></div>
+                    </div>
+                    <div class="temp">
+                        <div class="icon-temp" id ="icon-temp"></div>
+                        <div class="loading" id="loading"></div> 
+                    </div>
+                    <div class="time">
+                        <div class="icon-time" id ="icon-time"></div>
+                        <div class="loading" id="loading"></div>
+                    </div>
                 </div>       
             </div>
             <div class="current-condition">

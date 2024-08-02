@@ -1,16 +1,13 @@
-// visualcrossingAPI.js
+// apiHandler.js
 import { config } from './config.js';
+import { handleApiError, handleHttpError } from './errorHandler.js';
 
 function getApiURL(location) {
-    const icons = config.iconGroup; 
-    const apiKey = config.apiKey;
-    const units = config.unitGroup;
-    
-    let apiURL = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${apiKey}&iconSet=${icons}&unitGroup=${units}`;
-    return apiURL;
+    const { iconGroup, apiKey, unitGroup } = config;    
+    return `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${apiKey}&iconSet=${iconGroup}&unitGroup=${unitGroup}`;
 }
 
-async function apiConnect(url) {
+async function apiFetch(url) {
     try {
         let response = await fetch(url);
 
@@ -18,10 +15,11 @@ async function apiConnect(url) {
             let weatherData = await response.json();
             return weatherData;
         } else {
+            handleHttpError(response.status);
             throw new Error(`HTTP error! Status: ${response.status}`);
         }      
     } catch(error) {
-        console.error('Error:', error.message);
+        handleApiError(error);
         return null;
     }
 }
@@ -29,7 +27,7 @@ async function apiConnect(url) {
 export async function getWeatherData(location) {
     try {
         const url = getApiURL(location);
-        const data = await apiConnect(url);
+        const data = await apiFetch(url);
         if (data && data.currentConditions) {
             console.log(data);
             return data;
@@ -37,7 +35,7 @@ export async function getWeatherData(location) {
             throw new Error(`No data recieved.`);
         }
     } catch(error) {
-        console.error('Error while fetching weather data:', error.message);
+        handleApiError(error);
         return null;
     }
 }

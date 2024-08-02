@@ -4,51 +4,77 @@ import _ from 'lodash';
 import './styles/main.scss';
 
 // JS imports
-import { getWeatherData } from './visualcrossingAPI.js';
+import { getWeatherData } from './apiHandler.js';
 import { WeatherData } from './weatherData.js';
-import { render } from './render.js';
+import { render, clearPage } from './render.js';
 import { unitToggle, searchLocation } from './eventHandler.js';
-import { getElement, getAllElements } from './domUtils.js';
+import { getElement, getAllElements, showLoading, hideLoading, clearContent  } from './domUtils.js';
 
-async function fetchAndStoreWeatherData(location) {
-    // const localStorageKey = `weatherData-${location}`;
-    // const cachedData = localStorage.getItem(localStorageKey);
 
-    // if (cachedData) {
-    //     console.log('Using cached data from local storage');
-    //     return JSON.parse(cachedData);
-    // }
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
-    const rawData = await getWeatherData(location);
+// I created a factory, i don't know why...
+function createInit() {
 
-    // if (rawData) {
-    //     console.log('rawData');
-    //     localStorage.setItem(localStorageKey, JSON.stringify(rawData));
-    // }
-    return rawData;
+    let weatherData;
+
+    // Fetch data from API
+    async function fetchWeatherData(location) {
+        clearPage();
+        showLoading();
+        try {
+            const rawData = await getWeatherData(location);
+            weatherData = new WeatherData(rawData);
+            return weatherData;
+        } catch (error) {
+            console.error('Failed to fetch weather data');
+        } finally {
+            await delay(3000);
+            hideLoading();
+        }
+    }
+
+    // Initialise location data and renders
+    async function init(location = 'melbourne') {
+        const data = await fetchWeatherData(location);
+        if (data) {
+            render(data);
+        } else {
+            alert('No matching location found.');
+        }
+    }
+    
+    function getWeatherDataFromInit() {
+        return weatherData;
+    }
+
+    return { init, getWeatherDataFromInit };
 }
 
-async function init(location = 'melbourne') {
-    const rawData = await fetchAndStoreWeatherData(location);
+// Destructure 
+const { init, getWeatherDataFromInit } = createInit();
 
-    if (rawData) {
-        const weatherData = new WeatherData(rawData);
-        render(weatherData);
-    } else {
-        console.error('Failed to fetch weather data');
-    }
+// Callback for changed location
+function handleLocationChange(newLocation) {
+    console.log(`lcoation changed to :${newLocation}`);
+    init(newLocation);
+}
+
+// Callback for chagned unit group
+function handleUnitToggle() {
+    const address = getWeatherDataFromInit().getAddress();
+    init(address);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     const unitButtons = getAllElements('.units .unit-group');
     const locationInput = getElement('#location');
 
-    // Initialize the app and set up unit toggle. when toggled re-initialize.
+    // Initialize the app and update unit group and locaiton re-render.
     init().then(() => {
-        searchLocation(locationInput, (newLocation) => {
-            console.log(`Location changed to: ${newLocation}`);
-            init(newLocation);
-        });
-        unitToggle(unitButtons, () => init(locationInput.value || 'melbourne'));
+        searchLocation(locationInput, handleLocationChange);
+        unitToggle(unitButtons, handleUnitToggle);
     });
 });

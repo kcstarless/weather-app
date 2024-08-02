@@ -1,6 +1,6 @@
 // render.js - takes care of all renders to DOM.
 import { format, parse } from 'date-fns';
-import { unitSymbols } from './units.js';
+import { unitSymbols } from './domUtils.js';
 import { config, getProperties } from './config.js';
 
 export function render(data) {
@@ -43,22 +43,26 @@ function renderCurrentConditions(data){
 }
 
 function renderOverview (data) {
-    const iconContainer  = document.querySelector('.icon');
-    const tempContainer = document.querySelector('.temp');
-    const timeContainer = document.querySelector('.time');
-    const headerContainer = document.querySelector('.overview-title');
-    const iconURL = data.getIcon();
+    const iconValueContainer = document.querySelector('.icon-value');
+    const tempValueContainer = document.querySelector('.icon-temp');
+    const timeValueContainer = document.querySelector('.icon-time');
+    const headerContainer = document.querySelector('.overview-location');
+   
+    // Clear specific elements within each container
 
-    // Clear existing content
-    iconContainer.innerHTML = '';
-    tempContainer.innerHTML = '';
-    timeContainer.innerHTML = '';
-    headerContainer.innerHTML = '';
 
-    // Overview header
+    // Clear content of specific elements
+    iconValueContainer.textContent = '';
+    tempValueContainer.textContent = '';
+    timeValueContainer.textContent = '';
+
+    headerContainer.textContent = '';
+
+    // Get data
     const headerElement = data.address;
-    // Create a new <img> element for the icon
+
     const imgElement = document.createElement('img');
+    const iconURL = data.getIcon();
     imgElement.src = iconURL;
     imgElement.alt = 'Weather Icon';
 
@@ -68,8 +72,20 @@ function renderOverview (data) {
 
     // iconContainer.innerHTML = '';
     // Append the new all overview elements
-    headerContainer.append(headerElement)
-    iconContainer.append(imgElement);
-    tempContainer.append(tempElement);
-    timeContainer.append(timeElement);
+    headerContainer.append(headerElement);
+    iconValueContainer.append(imgElement);
+    tempValueContainer.append(tempElement);
+    timeValueContainer.append(timeElement);
+}
+
+export function clearPage () {
+    // Clear specific elements within each container
+    const iconValueContainer = document.querySelector('.icon-value');
+    const tempValueContainer = document.querySelector('.icon-temp');
+    const timeValueContainer = document.querySelector('.icon-time');
+
+    // Clear content of specific elements
+    iconValueContainer.textContent = '';
+    tempValueContainer.textContent = '';
+    timeValueContainer.textContent = '';
 }
