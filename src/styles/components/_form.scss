@@ -14,22 +14,28 @@ form {
     font-size: var(--font-size-xs);
   }
   
-  .btn {
-    width: 200px;
-  }
-  
   input {
     width: 300px;
     letter-spacing: 2px;
     outline: none;
+    color: var(--color-light);
     line-height: var(--space-xxl);
+    font-size: var(--font-size-l);
     padding-left: var(--space-s);
-    border: solid 2px var(--color-primary);
-    border-radius: var(--border-radius);
+    border: 0;
+    border-bottom: solid 5px var(--color-primary);
+    // border-radius: var(--border-radius);
+    background-color: transparent;
+  }
+
+  input::placeholder {
+    color: #ffffff; /* Sets the placeholder text color to white */
+    opacity: 1; /* Ensures the placeholder text is fully opaque */
   }
   
   input:focus {
-    border: solid 2px var(--color-secondary);
+    background-color: transparent;
   }
+    // border: solid 2px var(--color-secondary);
 }
 

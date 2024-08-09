@@ -50,12 +50,6 @@ function renderOverview (data) {
    
     // Clear specific elements within each container
 
-
-    // Clear content of specific elements
-    iconValueContainer.textContent = '';
-    tempValueContainer.textContent = '';
-    timeValueContainer.textContent = '';
-
     headerContainer.textContent = '';
 
     // Get data

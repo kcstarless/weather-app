@@ -7,9 +7,19 @@ header {
     // border: var(--border-dark);
 
     h1 {
+      position: relative;
       align-self: center;
-      color: var(--color-light);
+      color: var(--color-primary);
       padding: var(--space-s) 0 var(--space-xl) 0;
+      background: linear-gradient(70deg, #e04b5a 50%, white 50%);
+      color: transparent; /* Hide the default text color */
+      background-clip: text; /* For other browsers */
+
+      .logo {
+        position: absolute;
+        left: 100px;
+        bottom: 55px;
+      }
     }
 
     .units {
@@ -19,9 +29,11 @@ header {
       gap: var(--space-xxxs);
 
       .unit-group {
+        
         background-color: var(--color-primary); /* Default background color */
         color: var(--color-white); /* Default text color */
         border: none; /* Remove border */
+        // border: solid 1px var(--color-secondary);
         border-radius: var(--border-radius); /* Rounded corners */
         padding: var(--space-s); /* Padding */
         cursor: pointer; /* Pointer cursor on hover */
