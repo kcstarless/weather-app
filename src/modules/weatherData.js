@@ -38,9 +38,7 @@ export class WeatherData {
         return dayData.hours || [];
     }
 
-    getIcon() {
-        const icon = this.current.icon;
-
+    getIcon(icon) {
         const ICON_BASE_URL = 'https://raw.githubusercontent.com/visualcrossing/WeatherIcons/main/PNG/2nd%20Set%20-%20Color/';
         const iconURL = `${ICON_BASE_URL}${icon}.png`;
         

@@ -9,8 +9,11 @@
     height: 150px;
     width: 150px;
     border-radius: calc(var(--border-radius) * 2);
-
     position: relative;
+    background-position: calc(100% - var(--space-s)) calc(100% - var(--space-s)); /* Positioning background image at bottom-right with padding */
+    background-size: fit; /* Maintain original size of the image */
+    background-repeat: no-repeat;
+    
 
     .card-title {
         font-size: var(--font-size-s);

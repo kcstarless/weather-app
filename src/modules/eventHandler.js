@@ -1,6 +1,6 @@
 // eventHandler.js
 import { setUnitGroup } from './config.js';
-
+import { validateInput } from './validateForm.js';
 
 // Unit (imperial/metric) handler.
 export function unitToggle(unitButtons, onUnitChange){
@@ -28,9 +28,14 @@ export function unitToggle(unitButtons, onUnitChange){
 export function searchLocation(location, onSubmit){
     location.addEventListener('keypress', (event) => {
         if (event.key === 'Enter') {
-            console.log(location.value);
-            event.preventDefault();
-            onSubmit(location.value);
+            event.preventDefault(); // Prevent form submission
+
+            if (validateInput(location)) { // Validate the input
+                console.log(location.value);
+                onSubmit(location.value);
+            } else {
+                console.log('Input is invalid'); // Log or handle invalid input case
+            }
         }
     })
 }

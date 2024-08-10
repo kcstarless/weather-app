@@ -1,11 +1,8 @@
 .content {
     grid-area: content;
-    // border: var(--border-dark);
     border-radius: var(--border-radius);
-    // padding: 20px;
     display: flex;
     flex-direction: column;
-    // margin-top: -130px;
 }
 
 .overview {
@@ -70,6 +67,7 @@
 }
 
 .current-condition {
+    border: var(--border-dark);
     margin-top: 20px;
     display: flex;
     flex-direction: row;
@@ -77,4 +75,19 @@
     align-items: center;
     flex-wrap: wrap;
     gap: var(--space-m);
+}
+
+.seven-days {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+    border: var(--border-dark);
+
+    h2 {
+    }
+    // position: relative;
+    // overflow: hidden; /* Hide overflow to keep the layout neat */
+    // width: 100%; /* Adjust as needed */
+    // height: x; /* Adjust as needed */
 }

@@ -4,16 +4,12 @@ import _ from 'lodash';
 import './styles/main.scss';
 
 // JS imports
-import { getWeatherData } from './apiHandler.js';
-import { WeatherData } from './weatherData.js';
-import { render, clearPage } from './render.js';
-import { unitToggle, searchLocation } from './eventHandler.js';
-import { getElement, getAllElements, showLoading, hideLoading, clearContent  } from './domUtils.js';
-
-
-function delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
+import { getWeatherData } from './modules/apiHandler.js';
+import { WeatherData } from './modules/weatherData.js';
+import { render, clearPage } from './modules/render.js';
+import { unitToggle, searchLocation } from './modules/eventHandler.js';
+import { showMessage } from './modules/errorHandler.js';
+import { getElement, getAllElements, showLoading, hideLoading  } from './modules/domUtils.js';
 
 // I created a factory, i don't know why...
 function createInit() {
@@ -22,16 +18,21 @@ function createInit() {
 
     // Fetch data from API
     async function fetchWeatherData(location) {
+        const locationInput = getElement('#location');
         clearPage();
         showLoading();
         try {
             const rawData = await getWeatherData(location);
             weatherData = new WeatherData(rawData);
+            locationInput.value = '';
+            console.log(weatherData);
             return weatherData;
         } catch (error) {
-            console.error('Failed to fetch weather data');
+            console.log('Failed to fetch weather data');
+
+            return null
         } finally {
-            await delay(3000);
+            // await delay(2000);
             hideLoading();
         }
     }
@@ -68,13 +69,21 @@ function handleUnitToggle() {
     init(address);
 }
 
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const unitButtons = getAllElements('.units .unit-group');
     const locationInput = getElement('#location');
+   
+
+    // showMessage('Please enter your location.');
+
 
     // Initialize the app and update unit group and locaiton re-render.
     init().then(() => {
-        searchLocation(locationInput, handleLocationChange);
-        unitToggle(unitButtons, handleUnitToggle);
+            searchLocation(locationInput, handleLocationChange);
+            unitToggle(unitButtons, handleUnitToggle);
     });
 });
